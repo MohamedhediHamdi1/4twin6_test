@@ -1,7 +1,36 @@
 {
-    "users": [
-      { "id": 1, "name": "John Doe", "age": 25 },
-      { "id": 2, "name": "Jane Smith", "age": 30 }
-    ]
-  }
-  
+  "albums": [
+    {
+      "id": "1734516287463",
+      "title": "album 1",
+      "coverPicture": "assets/history.jpg",
+      "archived": 0,
+      "creationDate": "2024-12-18T10:04:35.309Z"
+    },
+    {
+      "id": "1734516287464",
+      "title": "album 1",
+      "coverPicture": "assets/history.jpg",
+      "archived": 0,
+      "creationDate": "2024-12-18T10:04:35.309Z"
+    }
+  ],
+  "photos": [
+    {
+      "id": "1",
+      "title": "title 1",
+      "creationDate": "2024-01-15",
+      "description": "description 1",
+      "source": "assets/history.jpg",
+      "idAlbum": "1734516287463"
+    },
+    {
+      "id": "2",
+      "title": "title 2",
+      "creationDate": "2024-03-10",
+      "description": "description 2",
+      "source": "assets/history.jpg",
+      "idAlbum": "1734516287463"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<h2>Photos</h2>
+<div *ngIf="photos && photos.length > 0; else noPhotos">
+  <app-photo *ngFor="let photo of photos" [photo]="photo"></app-photo>
+</div>
+
+<ng-template #noPhotos>
+  <p>No photos available for this album.</p>
+</ng-template>

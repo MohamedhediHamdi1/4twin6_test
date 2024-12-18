@@ -1,0 +1,30 @@
+<h2>Add New Album</h2>
+<form #albumForm="ngForm" (ngSubmit)="addAlbum()">
+  <div>
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="newAlbum.title"
+      required
+      pattern="[a-zA-Z0-9 ]*"
+      #title="ngModel"
+    />
+    <div *ngIf="title.errors!['required'] && title.touched">Title is required</div>
+    <div *ngIf="title.errors!['pattern'] && title.touched">Only letters and numbers are allowed</div>
+  </div>
+
+  <div>
+    <label for="coverPicture">Cover Picture URL:</label>
+    <input
+      type="text"
+      name="coverPicture"
+      [(ngModel)]="newAlbum.coverPicture"
+      minlength="5"
+      #coverPicture="ngModel"
+    />
+    <div *ngIf="coverPicture.errors!['minlength'] && coverPicture.touched">Minimum 5 characters</div>
+  </div>
+
+  <button type="submit" [disabled]="albumForm.invalid">Add Album</button>
+</form>

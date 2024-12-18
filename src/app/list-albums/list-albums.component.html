@@ -1,0 +1,5 @@
+<div *ngFor="let album of albums">
+    <h2 routerLink="/photos/{{album.id}}">{{album.title}}</h2>
+    <img src="{{album.coverPicture}}" alt="">
+    <button (click)="removeAlbum(album.id)">delete</button>
+</div>

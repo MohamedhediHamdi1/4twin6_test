@@ -25,3 +25,36 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+ json-server --watch db.json
+
+ getAlbums(): Observable<Album[]> {
+    return this.http.get<Album[]>(`${this.apiUrl}/albums`);
+  }
+
+  // Fetch archived albums
+  getArchivedAlbums(): Observable<Album[]> {
+    return this.http.get<Album[]>(`${this.apiUrl}/albums?archived=1`);
+  }
+
+  // Add a new album
+  addAlbum(album: Album): Observable<Album> {
+    return this.http.post<Album>(`${this.apiUrl}/albums`, album);
+  }
+
+  // Delete an album and its associated photos
+  deleteAlbum(albumId: number): Observable<void> {
+    // Delete associated photos first
+    this.deletePhotosByAlbumId(albumId).subscribe();
+    return this.http.delete<void>(`${this.apiUrl}/albums/${albumId}`);
+  }
+
+  // Fetch photos of a specific album
+  getPhotosByAlbumId(albumId: number): Observable<Photo[]> {
+    return this.http.get<Photo[]>(`${this.apiUrl}/photos?idAlbum=${albumId}`);
+  }
+
+  // Delete all photos associated with an album
+  private deletePhotosByAlbumId(albumId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/photos?idAlbum=${albumId}`);
+  }
